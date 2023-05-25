@@ -4,7 +4,7 @@ import io
 import streamlit as st
 
 # GitHub repository URL
-github_repo_url = 'https://github.com/GurminSingh/data.git'
+github_repo_url = 'https://github.com/GurminSingh/data'
 
 # Excel file path in the repository
 excel_file_path = 'Classeur3.xlsx'
