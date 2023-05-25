@@ -2,6 +2,7 @@ import pandas as pd
 import requests
 import io
 import streamlit as st
+import numpy as np
 
 # GitHub repository URL
 github_repo_url = 'https://github.com/GurminSingh/data'
@@ -16,12 +17,6 @@ content = response.content
 # Read the Excel file using pandas
 df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
 
-
-import pandas as pd
-import numpy as np
-
-all_statements_path = 'df'
-
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
     df = df.replace('-', np.nan)
@@ -29,10 +24,13 @@ def load_and_clean_statement_df(statements_path, sheet_name):
     df = df.fillna(0) 
     return df
 
+all_statements_path = 'Classeur3.xlsx'
 inc_df = load_and_clean_statement_df(all_statements_path, 'Income Statement')
 ca_df = load_and_clean_statement_df(all_statements_path, 'Cash Flow')
 bs_df = load_and_clean_statement_df(all_statements_path, 'Balance Sheet')
 
+# Streamlit code for displaying the data or interacting with it
+# Add your Streamlit code here as per your requirements
 
 
 
