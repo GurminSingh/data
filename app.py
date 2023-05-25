@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-all_statements_path = 'mitra.xlsx'
+all_statements_path = 'https://github.com/GurminSingh/data/blob/49d24b82b97f136d137dc9953991e019bfd6eea8/%20Mithra.xlsx'
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name,index_col=0)
     df = df.replace('-', np.nan)
