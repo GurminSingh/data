@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import xlsxwriter
 
-all_statements_path = 'Classeur3.xlsx
+all_statements_path = 'Classeur3.xlsx'
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name,index_col=0)
     df = df.replace('-', np.nan)
