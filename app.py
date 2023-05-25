@@ -1,17 +1,20 @@
 import pandas as pd
 import numpy as np
 
-def load_and_clean_statement_df(statements_url, sheet_name):
-    df = pd.read_excel(statements_url, sheet_name=sheet_name, index_col=0)
+all_statements_path = 'Classeur3.xlsx'
+
+def load_and_clean_statement_df(statements_path, sheet_name):
+    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
     df = df.fillna(0) 
     return df
 
-all_statements_url = 'https://github.com/GurminSingh/data/blob/0d52b51aa2f9c6c9e36880c10926dd17fac86a64/mitra.xlsx'
-inc_df = load_and_clean_statement_df(all_statements_url, 'Income Statement')
-ca_df = load_and_clean_statement_df(all_statements_url, 'Cash Flow')
-bs_df = load_and_clean_statement_df(all_statements_url, 'Balance Sheet')
+inc_df = load_and_clean_statement_df(all_statements_path, 'Income Statement')
+ca_df = load_and_clean_statement_df(all_statements_path, 'Cash Flow')
+bs_df = load_and_clean_statement_df(all_statements_path, 'Balance Sheet')
+
+
 
 
 Currents_Assets=""
