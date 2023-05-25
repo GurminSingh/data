@@ -14,7 +14,7 @@ response = requests.get(f'{github_repo_url}/{excel_file_path}')
 content = response.content
 
 # Read the Excel file using pandas
-df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
+df = pd.read_excel(io.BytesIO(content))
 
 
 import pandas as pd
@@ -23,7 +23,7 @@ import numpy as np
 all_statements_path = 'df'
 
 def load_and_clean_statement_df(statements_path, sheet_name):
-    df = pd.read_excel(statements_path, sheet_name=sheet_name, engine='openpyxl', index_col=0)
+    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
     df = df.fillna(0) 
