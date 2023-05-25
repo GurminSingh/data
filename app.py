@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import xlsxwriter
 
 all_statements_path = 'mitra.xlsx'
 def load_and_clean_statement_df(statements_path, sheet_name):
@@ -534,7 +533,7 @@ for row in table.find_all("tr"):
         break
         
 mitra = yf.Ticker('APPL')
-marketCap = mitra.info['marketCap']
+marketCap = 100000000000
 beta=2.13
 cost_of_equity = beta * erp + rf
 cost_of_debt = rf + spread
