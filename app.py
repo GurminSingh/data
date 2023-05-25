@@ -1,16 +1,26 @@
 import pandas as pd
 import numpy as np
+import requests
 
-all_statements_path = 'https://github.com/GurminSingh/data/blob/49d24b82b97f136d137dc9953991e019bfd6eea8/%20Mithra.xlsx'
+all_statements_url = 'Classeur3.xlsx'
+
 def load_and_clean_statement_df(statements_path, sheet_name):
-    df = pd.read_excel(statements_path, sheet_name=sheet_name,index_col=0)
+    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
-    df = df.fillna(0) 
+    df = df.fillna(0)
     return df
-inc_df = load_and_clean_statement_df(all_statements_path, 'Income Statement')
-ca_df = load_and_clean_statement_df(all_statements_path, 'Cash Flow')
-bs_df = load_and_clean_statement_df(all_statements_path, 'Balance Sheet')
+
+# Download the Excel file
+response = requests.get(all_statements_url)
+with open('Mithra.xlsx', 'wb') as file:
+    file.write(response.content)
+
+# Load and clean the statement dataframes
+inc_df = load_and_clean_statement_df('Mithra.xlsx', 'Income Statement')
+ca_df = load_and_clean_statement_df('Mithra.xlsx', 'Cash Flow')
+bs_df = load_and_clean_statement_df('Mithra.xlsx', 'Balance Sheet')
+
 
 Currents_Assets=""
 Currents_Liabilities=""
