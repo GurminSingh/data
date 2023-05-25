@@ -301,4 +301,4 @@ xyzservices==2023.2.0
 yahoo-fin==0.8.9.1
 yapf==0.31.0
 yfinance==0.2.14
-zipp==3.11.0
+
