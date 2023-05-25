@@ -1,8 +1,26 @@
+import pandas as pd
+import requests
+import io
+import streamlit as st
+
+# GitHub repository URL
+github_repo_url = 'https://github.com/GurminSingh/data.git'
+
+# Excel file path in the repository
+excel_file_path = 'Classeur3.xlsx'
+
+# Download the Excel file from GitHub
+response = requests.get(f'{github_repo_url}/{excel_file_path}')
+content = response.content
+
+# Read the Excel file using pandas
+df = pd.read_excel(io.BytesIO(content))
+
 
 import pandas as pd
 import numpy as np
 
-all_statements_path = 'Classeur3.xlsx'
+all_statements_path = 'df'
 
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name, engine='openpyxl', index_col=0)
