@@ -15,7 +15,7 @@ response = requests.get(f'{github_repo_url}/{excel_file_path}')
 content = response.content
 
 # Read the Excel file using pandas and 'xlrd' engine
-df = pd.read_excel(io.BytesIO(content), engine='xlrd')
+df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
 
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0, engine='xlrd')
