@@ -14,7 +14,7 @@ response = requests.get(f'{github_repo_url}/{excel_file_path}')
 content = response.content
 
 # Read the Excel file using pandas
-df = pd.read_excel(io.BytesIO(content))
+df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
 
 
 import pandas as pd
