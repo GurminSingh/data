@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import requests
 
-all_statements_url = 'Classeur3.xlsx'
+all_statements_url = 'mithra.xlsx'
 
 def load_and_clean_statement_df(statements_path, sheet_name):
     df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
@@ -17,9 +17,9 @@ with open('Mithra.xlsx', 'wb') as file:
     file.write(response.content)
 
 # Load and clean the statement dataframes
-inc_df = load_and_clean_statement_df('Mithra.xlsx', 'Income Statement')
-ca_df = load_and_clean_statement_df('Mithra.xlsx', 'Cash Flow')
-bs_df = load_and_clean_statement_df('Mithra.xlsx', 'Balance Sheet')
+inc_df = load_and_clean_statement_df('mithra.xlsx', 'Income Statement')
+ca_df = load_and_clean_statement_df('mithra.xlsx', 'Cash Flow')
+bs_df = load_and_clean_statement_df('mithra.xlsx', 'Balance Sheet')
 
 
 Currents_Assets=""
