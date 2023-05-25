@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import xlsxwriter
+
 
 all_statements_path = 'Classeur3.xlsx'
 def load_and_clean_statement_df(statements_path, sheet_name):
