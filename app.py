@@ -14,11 +14,11 @@ excel_file_path = 'Classeur3.xlsx'
 response = requests.get(f'{github_repo_url}/{excel_file_path}')
 content = response.content
 
-# Read the Excel file using pandas
-df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
+# Read the Excel file using pandas and 'xlrd' engine
+df = pd.read_excel(io.BytesIO(content), engine='xlrd')
 
 def load_and_clean_statement_df(statements_path, sheet_name):
-    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
+    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0, engine='xlrd')
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
     df = df.fillna(0) 
@@ -31,6 +31,7 @@ bs_df = load_and_clean_statement_df(all_statements_path, 'Balance Sheet')
 
 # Streamlit code for displaying the data or interacting with it
 # Add your Streamlit code here as per your requirements
+
 
 
 
