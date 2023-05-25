@@ -4,7 +4,7 @@ import numpy as np
 all_statements_path = 'Classeur3.xlsx'
 
 def load_and_clean_statement_df(statements_path, sheet_name):
-    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
+    df = pd.read_excel(statements_path, sheet_name=sheet_name, engine='openpyxl', index_col=0)
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
     df = df.fillna(0) 
