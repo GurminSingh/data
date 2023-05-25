@@ -1,25 +1,17 @@
 import pandas as pd
 import numpy as np
-import requests
+import xlsxwriter
 
-all_statements_url = 'mithra.xlsx'
-
+all_statements_path = 'Classeur3.xlsx'
 def load_and_clean_statement_df(statements_path, sheet_name):
-    df = pd.read_excel(statements_path, sheet_name=sheet_name, index_col=0)
+    df = pd.read_excel(statements_path, sheet_name=sheet_name,index_col=0)
     df = df.replace('-', np.nan)
     df = df.dropna(how='all')
-    df = df.fillna(0)
+    df = df.fillna(0) 
     return df
-
-# Download the Excel file
-response = requests.get(all_statements_url)
-with open('Mithra.xlsx', 'wb') as file:
-    file.write(response.content)
-
-# Load and clean the statement dataframes
-inc_df = load_and_clean_statement_df('mithra.xlsx', 'Income Statement')
-ca_df = load_and_clean_statement_df('mithra.xlsx', 'Cash Flow')
-bs_df = load_and_clean_statement_df('mithra.xlsx', 'Balance Sheet')
+inc_df = load_and_clean_statement_df(all_statements_path, 'Income Statement')
+ca_df = load_and_clean_statement_df(all_statements_path, 'Cash Flow')
+bs_df = load_and_clean_statement_df(all_statements_path, 'Balance Sheet')
 
 
 Currents_Assets=""
